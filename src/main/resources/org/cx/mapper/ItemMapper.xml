@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.cx.mapper.ItemMapper" >
+  <resultMap id="BaseResultMap" type="org.cx.model.Item" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="item_desc" property="itemDesc" jdbcType="VARCHAR" />
+    <result column="item_small_img" property="itemSmallImg" jdbcType="VARCHAR" />
+    <result column="item_big_img" property="itemBigImg" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="sku_num" property="skuNum" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="item_rank" property="itemRank" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, item_name, item_desc, item_small_img, item_big_img, price, sku_num, type, item_rank, create_time, update_time, version
+  </sql>
+  <select id="selectByParam" resultMap="BaseResultMap" parameterType="org.cx.model.Item" >
+    select
+    <include refid="Base_Column_List" />
+    from item
+    <where >
+      <if test="itemName != null" >
+        AND item_name = #{itemName,jdbcType=VARCHAR}
+      </if>
+      <if test="itemDesc != null" >
+        AND item_desc = #{itemDesc,jdbcType=VARCHAR}
+      </if>
+      <if test="itemSmallImg != null" >
+        AND item_small_img = #{itemSmallImg,jdbcType=VARCHAR}
+      </if>
+      <if test="itemBigImg != null" >
+        AND item_big_img = #{itemBigImg,jdbcType=VARCHAR}
+      </if>
+      <if test="price != null" >
+        AND price = #{price,jdbcType=INTEGER}
+      </if>
+      <if test="skuNum != null" >
+        AND sku_num = #{skuNum,jdbcType=INTEGER}
+      </if>
+      <if test="type != null" >
+        AND type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="itemRank != null" >
+        AND item_rank = #{itemRank,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null" >
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateTime != null" >
+        AND update_time = #{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="version != null" >
+        AND version = #{version,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="org.cx.model.Item" >
+    insert into item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="itemDesc != null" >
+        item_desc,
+      </if>
+      <if test="itemSmallImg != null" >
+        item_small_img,
+      </if>
+      <if test="itemBigImg != null" >
+        item_big_img,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="skuNum != null" >
+        sku_num,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="itemRank != null" >
+        item_rank,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc != null" >
+        #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSmallImg != null" >
+        #{itemSmallImg,jdbcType=VARCHAR},
+      </if>
+      <if test="itemBigImg != null" >
+        #{itemBigImg,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="skuNum != null" >
+        #{skuNum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="itemRank != null" >
+        #{itemRank,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="org.cx.model.Item">
+    update item
+    <set >
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc != null" >
+        item_desc = #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemSmallImg != null" >
+        item_small_img = #{itemSmallImg,jdbcType=VARCHAR},
+      </if>
+      <if test="itemBigImg != null" >
+        item_big_img = #{itemBigImg,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="skuNum != null" >
+        sku_num = #{skuNum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="itemRank != null" >
+        item_rank = #{itemRank,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateSkuNumById" parameterType="org.cx.model.Item">
+  	UPDATE item SET sku_num=#{skuNum,jdbcType=INTEGER}, version=version+1 
+  	WHERE id=#{id,jdbcType=INTEGER} AND version=#{version,jdbcType=INTEGER}
+  </update>
+  
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+  	DELETE FROM item WHERE id=#{id,jdbcType=INTEGER}
+  </delete>
+</mapper>
